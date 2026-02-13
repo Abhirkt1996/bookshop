@@ -119,6 +119,61 @@ const books = [
     title: "Ayn Rand",
     image: "/books/24.jpg",
   },
+  {
+    id: 25,
+    title: "Der Raat Tak",
+    image: "/books/25.jpg",
+  },
+  {
+    id: 26,
+    title: "Seeta",
+    image: "/books/26.jpg",
+  },
+  {
+    id: 27,
+    title: "Ravan",
+    image: "/books/27.jpg",
+  },
+  {
+    id: 28,
+    title: "charitraheen",
+    image: "/books/28.jpg",
+  },
+  {
+    id: 29,
+    title: "The Richest man in Babylon",
+    image: "/books/29.jpg",
+  },
+  {
+    id: 30,
+    title: "400 Days",
+    image: "/books/30.jpg",
+  },
+  {
+    id: 31,
+    title: "Diary of a Wimpky kid",
+    image: "/books/31.jpg",
+  },
+  {
+    id: 32,
+    title: "Enchantments",
+    image: "/books/32.jpg",
+  },
+  {
+    id: 33,
+    title: "Financial Shenanigans",
+    image: "/books/33.jpg",
+  },
+  {
+    id: 35,
+    title: "Talking with Psychopaths",
+    image: "/books/35.jpg",
+  },
+  {
+    id: 34,
+    title: "Nagas",
+    image: "/books/34.jpg",
+  },
 
 ];
 

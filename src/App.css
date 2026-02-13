@@ -150,33 +150,64 @@ html, body, #root {
 
 /* ================= HOME HERO ================= */
 
+/* ================= HOME HERO WITH BLUR BG ================= */
+
 .home-hero {
-  flex: 1;
+  position: relative;
+  min-height: 90vh;
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 60px;
+  justify-content: space-between;
+  gap: 50px;
 
-  padding: 20px 60px;
+  padding: 40px 80px;
 
-  background: linear-gradient(to right, #4f46e5, #3b82f6);
   color: white;
+  overflow: hidden;
+}
+
+/* Blurred Background Layer */
+
+.home-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: url("/src/assets/shop.webp") center/cover no-repeat;
+
+  filter: blur(6px) brightness(0.75);
+
+  transform: scale(1.1); /* blur edge fix */
+
+  z-index: -1;
+}
+
+/* Left Image */
+
+.home-left {
+  flex: 1;
+  max-width: 45%;
+  display: flex;
+  justify-content: center;
 }
 
 .home-left img {
-  width: 260px;
-  height: 260px;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
 
-  border-radius: 50%;
-  object-fit: cover;
-
-  border: 4px solid white;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
+/* Right Content */
+
 .home-right {
-  max-width: 500px;
+  flex: 1;
+  max-width: 50%;
 }
 
 .home-right h1 {
@@ -198,6 +229,7 @@ html, body, #root {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .home-right button:hover {
@@ -214,11 +246,13 @@ html, body, #root {
     padding: 30px 20px;
   }
 
+  .home-left,
+  .home-right {
+    max-width: 100%;
+  }
+
   .home-left img {
-    width: 220px;
-    height: auto;
-    border-radius: 12px;
-    object-fit: contain;
+    max-width: 260px;
   }
 
   .home-right h1 {
@@ -246,18 +280,40 @@ html, body, #root {
   border-radius: 10px;
 
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .book-card img {
   width: 100%;
   height: 240px;
   object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.book-card h3 {
+  margin: 10px 0;
 }
 
 .book-card .price {
   color: #16a34a;
   font-weight: bold;
 }
+
+/* Hover Effect */
+
+.book-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.book-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Button */
 
 .order-btn {
   width: 100%;
@@ -271,10 +327,11 @@ html, body, #root {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-.order-btn:hover {
-  background: #1d4ed8;
+.book-card:hover .order-btn {
+  background: #16a34a;
 }
 
 /* ================= ABOUT ================= */
@@ -340,6 +397,116 @@ html, body, #root {
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
+/* ================= FOOTER ================= */
+
+.footer-simple {
+  background: #020617;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  color: #c7d2fe;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+/* Title Fade */
+
+.fade-title {
+  opacity: 1;
+  transform: translateY(0);
+
+  animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cards */
+
+.fade-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.fade-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ================= COLOR TITLE ================= */
+
+.color-title {
+  font-size: 36px;
+  font-weight: 700;
+
+  color: #1d4ed8;
+
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #22c55e,
+    #f97316,
+    #ec4899,
+    #2563eb
+  );
+
+  background-size: 300% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: colorFlow 4s linear infinite;
+}
+
+/* Gradient Move */
+
+@keyframes colorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+
+
+/* ================= CONTACT FIX ================= */
+
+/* Headings */
+.contact-info h2,
+.contact-form h2 {
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+/* Text */
+.contact-info p {
+  margin: 8px 0;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* WhatsApp Button */
 .whatsapp-btn {
   display: inline-block;
   margin-top: 15px;
@@ -350,21 +517,40 @@ html, body, #root {
   color: white;
   border-radius: 6px;
   text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.3s;
 }
 
+.whatsapp-btn:hover {
+  background: #16a34a;
+}
+
+/* Inputs */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  margin: 8px 0;
-  padding: 10px;
+  margin: 10px 0;
+  padding: 12px;
 
   border: 1px solid #cbd5f5;
-  border-radius: 5px;
+  border-radius: 6px;
+
+  font-size: 14px;
+  outline: none;
+
+  transition: 0.2s;
 }
 
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #2563eb;
+}
+
+/* Submit Button */
 .contact-form button {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 
   padding: 12px;
 
@@ -373,20 +559,14 @@ html, body, #root {
 
   border: none;
   border-radius: 6px;
+
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s;
 }
 
-/* ================= FOOTER ================= */
-
-.footer-simple {
-  background: #020617;
-}
-
-.footer-bottom {
-  text-align: center;
-
-  padding: 10px;
-
-  font-size: 13px;
-  color: #c7d2fe;
+.contact-form button:hover {
+  background: #1d4ed8;
 }
